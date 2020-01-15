@@ -1,0 +1,109 @@
+﻿@model Rauf_Gaming.Models.Product
+
+@{
+    ViewBag.Title = "Product";
+}
+
+@using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ProductId)
+    @Html.HiddenFor(model => model.Type)
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Product</h4>
+                <p class="card-description">
+
+                </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Title</label>
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Rating</label>
+                        @Html.DropDownList("Rating", new List<SelectListItem>
+                        {
+                           new SelectListItem{ Text="1 Star", Value = "1" },
+                           new SelectListItem{ Text="2 Stars", Value = "2" },
+                           new SelectListItem{ Text="3 Stars", Value = "3" },
+                           new SelectListItem{ Text="4 Stars", Value = "4" },
+                           new SelectListItem{ Text="5 Stars", Value = "5" },
+                        }, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Condition</label>
+                        @Html.DropDownList("Condition", new List<SelectListItem>
+                        {
+                           new SelectListItem{ Text="New", Value = "New" },
+                           new SelectListItem{ Text="Used", Value = "Used" },
+                        }, new { @class = "form-control" })
+                    </div>
+                    @{
+                        if (Request.QueryString["t"] == "Acc")
+                        {
+                            <div class="form-group">
+                                <label for="exampleInputEmail3">Category</label>
+                                @Html.DropDownList("Category", new List<SelectListItem>
+                                {
+                                   new SelectListItem{ Text="Select Category", Value = "0" },
+                                   new SelectListItem{ Text="VR", Value = "VR" },
+                                   new SelectListItem{ Text="Headsets", Value = "Headsets" },
+                                   new SelectListItem{ Text="Mouse", Value = "Mouse" },
+                                   new SelectListItem{ Text="Keyboards", Value = "Keyboards" },
+                                   new SelectListItem{ Text="Joysticks", Value = "Joysticks" },
+                                   new SelectListItem{ Text="Speakers", Value = "Speakers" },
+                                   new SelectListItem{ Text="Cameras", Value = "Cameras" },
+                                   new SelectListItem{ Text="TVs", Value = "TV" },
+                                }, new { @class = "form-control" })
+                            </div>
+                        }
+                        if (Request.QueryString["t"] == "Console")
+                        {
+                            <div class="form-group">
+                                <label for="exampleInputEmail3">Category</label>
+                                @Html.DropDownList("Category", new List<SelectListItem>
+                                {
+                                   new SelectListItem{ Text="Select Category", Value = "0" },
+                                   new SelectListItem{ Text="PlayStation", Value = "PlayStation" },
+                                   new SelectListItem{ Text="XBOX", Value = "XBOX" },
+                                   new SelectListItem{ Text="Nintendo", Value = "Nintendo" },
+                                   new SelectListItem{ Text="PC", Value = "PC" }
+                                }, new { @class = "form-control" })
+                            </div>
+                        }
+                    }
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Description</label>
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @rows = 4, required = "required" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Actual Price</label>
+                        @Html.TextBoxFor(model => model.ActualPrice, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.ActualPrice, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Brand</label>
+                        @Html.TextBoxFor(model => model.Publishers, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Publishers, "", new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <a href="/Admin/Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+}
+<script src="~/Scripts/App/Game/jsLoadGame.js"></script>
+
+
+
+
+

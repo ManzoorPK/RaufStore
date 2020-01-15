@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Company";
+}
+
+<section class="bg-image" style="background-color: rgb(53, 54, 56) !important;">
+    <img src="/Content/img/Headers/About/About-Company.jpg" alt=""><div class="owl-caption">
+   
+</div>
+</section>
+<br />
+<section class="py-lg-5 border-bottom-dashed">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="post post-single">
+                  
+                    <div class="post-body">
+
+                        <h6>About Us</h6>
+                        <p>
+                            Rauf Store is a Turkish registered company based in Istanbul, Turkey. The company is specialized in selling and buying gaming console machines and the brand new and used PC, PlayStation and XBOX games. The company was founded in 2019 to provide premium pricing and competitive pricing. Also the company sells many products which are (Virtual Reality gadgets, Televisions, mobile covers, speakers, headsets, joysticks, camera and computer mouses). Our competitive pricing have enabled us to take a good local market share.
+                        </p>
+                        
+                    </div>
+                </div>
+                <!-- end .post-single -->
+            
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h6 class="subtitle mb-4">You should also like</h6>
+        @{
+            Html.RenderAction("RelatedProducts", "Game");
+        }
+    </div>
+</section>
+
+<script src="~/Scripts/App/Game/jsCart.js"></script>

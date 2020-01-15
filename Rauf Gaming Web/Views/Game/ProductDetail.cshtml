@@ -1,0 +1,183 @@
+﻿@model  Rauf_Gaming.Models.ProductV1
+@{
+    ViewBag.Title = "Product";
+}
+
+<section class="pt-0 py-lg-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product mb-4 mb-lg-0">
+                    <div class="owl-carousel product-carousel" ya-carousel="nav: false">
+                        <div class="product-img">
+                            @{
+                                var Imagepath = Rauf_Gaming_Web.Classes.Settings.IMAGE_PATH + Model.ImagePath;
+                                <img src="@Imagepath" alt="@Model.Title">
+                            }
+                            @*<img src="https://img.youtube.com/vi/SG4hoev5uaI/maxresdefault.jpg" alt="">*@
+
+                        </div>
+                        @*<div class="product-img">
+                                <img src="https://static.giantbomb.com/uploads/original/5/56742/3058984-4450753062-rdr2-.jpg" alt="">
+                            </div>
+                            <div class="product-img">
+                                <img src="https://static.giantbomb.com/uploads/original/5/56742/3058976-8068256880-rdr2-.jpg" alt="">
+                            </div>
+                            <div class="product-img">
+                                <img src="https://static.giantbomb.com/uploads/original/5/56742/3058944-7481166741-rdr2-.jpg" alt="">
+                            </div>
+                            <div class="product-img">
+                                <img src="https://static.giantbomb.com/uploads/original/5/56742/3058974-3631271585-rdr2-.jpg" alt="">
+                            </div>
+                            <div class="product-img">
+                                <img src="https://static.giantbomb.com/uploads/original/5/56742/3058973-6072516909-rdr2-.jpg" alt="">
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form action="/Buy/MyCart">
+                    <div class="mb-4 pb-4 border-bottom-dashed">
+                        <h1 class="font-weight-bold">@Model.Title</h1>
+                        <div class="d-flex align-items-center">
+                            <div class="star d-flex font-size-md mr-2">
+                                @if (Model.Rating == "1")
+                                {
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                }
+                                @if (Model.Rating == "2")
+                                {
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                }
+                                @if (Model.Rating == "3")
+                                {
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                }
+                                @if (Model.Rating == "4")
+                                {
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-muted"></i>
+                                }
+                                @if (Model.Rating == "5")
+                                {
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                    <i class="ya ya-star text-warning"></i>
+                                }
+                            </div>
+                            @*<div class="text-muted"><span class="font-weight-semibold">25</span> Reviews</div>*@
+                        </div>
+                    </div>
+                    <p class="mb-4">@Model.Description</p>
+                    <ul class="list-inline mb-4 d-flex align-items-center">
+                        <li class="list-inline-item display-5 font-weight-bold">TL @String.Format("{0:n0}", Model.ActualPrice)</li>
+                        @*<li class="list-inline-item text-muted font-weight-light"><del>$90.00</del></li>*@
+                    </ul>
+                    <ul class="list-unstyled mb-4">
+                        <li>Genre: @Model.Genre</li>
+                        <li>Publisher: @Model.Publishers</li>
+                    </ul>
+                    <div class="d-lg-flex align-items-center">
+                        <h6 class="mb-3 mb-lg-0 mr-3">Platform:</h6>
+                        <div>
+                            @{
+                                if (Model.Platform != null)
+                                {
+                                    if (Model.Platform != "")
+                                    {
+                                        var platforms = Model.Platform.Split(',');
+                                        if (platforms.Length > 0)
+                                        {
+                                            foreach (var s in platforms)
+                                            {
+                                                if (Session["type"] != null)
+                                                {
+                                                    if (@s.Contains(Session["type"].ToString()))
+                                                    {
+                                                        <div class="custom-control custom-radio custom-control-inline mr-2">
+                                                            <input type="radio" id="platform_@s" value="@s" name="platform" class="custom-control-input" checked>
+                                                            <label class="custom-control-label" for="platform_@s">@s</label>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="custom-control custom-radio custom-control-inline mr-2">
+                                                            <input type="radio" id="platform_@s" value="@s" name="platform" class="custom-control-input">
+                                                            <label class="custom-control-label" for="platform_@s">@s</label>
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="custom-control custom-radio custom-control-inline mr-2">
+                                                        <input type="radio" id="platform_@s" value="@s" name="platform" class="custom-control-input" checked>
+                                                        <label class="custom-control-label" for="platform_@s">@s</label>
+                                                    </div>
+                                                }
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <div class="custom-control custom-radio custom-control-inline mr-2">
+                                                <input type="radio" id="platform_@Model.Platform" value="@Model.Platform" name="platform" class="custom-control-input" checked>
+                                                <label class="custom-control-label" for="platform_@Model.Platform">@Model.Platform</label>
+                                            </div>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (Session["type"] != null)
+                                    {
+                                        <div class="custom-control custom-radio custom-control-inline mr-2">
+                                            <input type="radio" id="platform_@Session["type"].ToString()" value="@Session["type"].ToString()" name="platform" class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="platform_@Session["type"].ToString()">@Session["type"].ToString()</label>
+                                        </div>
+                                    }
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    <div style="padding-top:10px;"></div>
+                    <div class="card mb-0">
+                        <div class="card-body">
+
+                            <button type="submit" onclick="GetProduct(@Model.ProductId)" class="btn btn-primary btn-block font-weight-semibold btn-lg mb-2">Add to cart <i class="ya ya-shopping-cart ml-2"></i></button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h6 class="subtitle mb-4">You should also like</h6>
+        @{
+            Html.RenderAction("RelatedProducts", "Game");
+        }
+    </div>
+</section>
+
+<script src="~/Scripts/App/Game/jsCart.js"></script>

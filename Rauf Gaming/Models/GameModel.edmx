@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RaufGamesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Exchange">
+          <Key>
+            <PropertyRef Name="ExchangeId" />
+          </Key>
+          <Property Name="ExchangeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Platform" Type="nvarchar" MaxLength="250" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="StorePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BuyingPrice" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreId" />
+          </Key>
+          <Property Name="GenreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Genre" Type="varchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Address" Type="varchar" MaxLength="1000" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="Product" Type="varchar" MaxLength="250" />
+          <Property Name="Type" Type="varchar" MaxLength="150" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="PlatformId" />
+          </Key>
+          <Property Name="PlatformId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Platform" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
+          <Property Name="Rating" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ActualPrice" Type="money" />
+          <Property Name="DiscountedPrice" Type="money" />
+          <Property Name="BuyingPrice" Type="money" />
+          <Property Name="Genre" Type="varchar" MaxLength="150" />
+          <Property Name="Publishers" Type="varchar" MaxLength="150" />
+          <Property Name="Platform" Type="varchar" MaxLength="150" />
+          <Property Name="tags" Type="varchar" MaxLength="500" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductImages">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="250" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RaufGames.dbo.ExchangeV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExchangeV">
+          <Key>
+            <PropertyRef Name="ExchangeId" />
+          </Key>
+          <Property Name="ClientGame" Type="varchar" MaxLength="150" />
+          <Property Name="ClientGameActualPrice" Type="money" />
+          <Property Name="ClientGameDisPrice" Type="money" />
+          <Property Name="StoreGame" Type="varchar" MaxLength="150" />
+          <Property Name="StoreGameActualPrice" Type="money" />
+          <Property Name="StoreGameDisPrice" Type="money" />
+          <Property Name="ExchangeId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Payment" Type="money" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RaufGames.dbo.OrderV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OrderV">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Address" Type="varchar" MaxLength="1000" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RaufGames.dbo.ProductImagesV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProductImagesV">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ImageId" Type="int" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
+          <Property Name="Rating" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ActualPrice" Type="money" />
+          <Property Name="DiscountedPrice" Type="money" />
+          <Property Name="Genre" Type="varchar" MaxLength="150" />
+          <Property Name="Publishers" Type="varchar" MaxLength="150" />
+          <Property Name="Platform" Type="varchar" MaxLength="150" />
+          <Property Name="tags" Type="varchar" MaxLength="500" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="250" />
+          <Property Name="ImageType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RaufGames.dbo.ProductV1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProductV1">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
+          <Property Name="Rating" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ActualPrice" Type="money" />
+          <Property Name="DiscountedPrice" Type="money" />
+          <Property Name="Genre" Type="varchar" MaxLength="150" />
+          <Property Name="Publishers" Type="varchar" MaxLength="150" />
+          <Property Name="Platform" Type="varchar" MaxLength="150" />
+          <Property Name="tags" Type="varchar" MaxLength="500" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="250" />
+          <Property Name="BuyingPrice" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RaufGames.dbo.SliderV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SliderV">
+          <Key>
+            <PropertyRef Name="ImageId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ImageId" Type="int" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="250" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Platform" Type="varchar" MaxLength="150" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="RaufGamesModelStoreContainer">
+          <EntitySet Name="Exchange" EntityType="Self.Exchange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platform" EntityType="Self.Platform" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeV" EntityType="Self.ExchangeV" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ExchangeV].[ClientGame] AS [ClientGame], 
+    [ExchangeV].[ClientGameActualPrice] AS [ClientGameActualPrice], 
+    [ExchangeV].[ClientGameDisPrice] AS [ClientGameDisPrice], 
+    [ExchangeV].[StoreGame] AS [StoreGame], 
+    [ExchangeV].[StoreGameActualPrice] AS [StoreGameActualPrice], 
+    [ExchangeV].[StoreGameDisPrice] AS [StoreGameDisPrice], 
+    [ExchangeV].[ExchangeId] AS [ExchangeId], 
+    [ExchangeV].[Email] AS [Email], 
+    [ExchangeV].[ClientName] AS [ClientName], 
+    [ExchangeV].[Payment] AS [Payment], 
+    [ExchangeV].[Type] AS [Type]
+    FROM [dbo].[ExchangeV] AS [ExchangeV]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderV" EntityType="Self.OrderV" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OrderV].[OrderId] AS [OrderId], 
+    [OrderV].[FirstName] AS [FirstName], 
+    [OrderV].[LastName] AS [LastName], 
+    [OrderV].[Email] AS [Email], 
+    [OrderV].[Address] AS [Address], 
+    [OrderV].[ZipCode] AS [ZipCode], 
+    [OrderV].[City] AS [City], 
+    [OrderV].[Country] AS [Country], 
+    [OrderV].[Date] AS [Date], 
+    [OrderV].[Status] AS [Status], 
+    [OrderV].[Total] AS [Total]
+    FROM [dbo].[OrderV] AS [OrderV]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProductImagesV" EntityType="Self.ProductImagesV" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductImagesV].[ImageId] AS [ImageId], 
+    [ProductImagesV].[ProductId] AS [ProductId], 
+    [ProductImagesV].[Title] AS [Title], 
+    [ProductImagesV].[Rating] AS [Rating], 
+    [ProductImagesV].[Description] AS [Description], 
+    [ProductImagesV].[ActualPrice] AS [ActualPrice], 
+    [ProductImagesV].[DiscountedPrice] AS [DiscountedPrice], 
+    [ProductImagesV].[Genre] AS [Genre], 
+    [ProductImagesV].[Publishers] AS [Publishers], 
+    [ProductImagesV].[Platform] AS [Platform], 
+    [ProductImagesV].[tags] AS [tags], 
+    [ProductImagesV].[Type] AS [Type], 
+    [ProductImagesV].[Condition] AS [Condition], 
+    [ProductImagesV].[Category] AS [Category], 
+    [ProductImagesV].[ImagePath] AS [ImagePath], 
+    [ProductImagesV].[ImageType] AS [ImageType]
+    FROM [dbo].[ProductImagesV] AS [ProductImagesV]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProductV1" EntityType="Self.ProductV1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductV1].[ProductId] AS [ProductId], 
+    [ProductV1].[Title] AS [Title], 
+    [ProductV1].[Rating] AS [Rating], 
+    [ProductV1].[Description] AS [Description], 
+    [ProductV1].[ActualPrice] AS [ActualPrice], 
+    [ProductV1].[DiscountedPrice] AS [DiscountedPrice], 
+    [ProductV1].[Genre] AS [Genre], 
+    [ProductV1].[Publishers] AS [Publishers], 
+    [ProductV1].[Platform] AS [Platform], 
+    [ProductV1].[tags] AS [tags], 
+    [ProductV1].[Type] AS [Type], 
+    [ProductV1].[Condition] AS [Condition], 
+    [ProductV1].[Category] AS [Category], 
+    [ProductV1].[ImagePath] AS [ImagePath], 
+    [ProductV1].[BuyingPrice] AS [BuyingPrice]
+    FROM [dbo].[ProductV1] AS [ProductV1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SliderV" EntityType="Self.SliderV" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SliderV].[ImageId] AS [ImageId], 
+    [SliderV].[ImagePath] AS [ImagePath], 
+    [SliderV].[Title] AS [Title], 
+    [SliderV].[Type] AS [Type], 
+    [SliderV].[Platform] AS [Platform], 
+    [SliderV].[ProductId] AS [ProductId]
+    FROM [dbo].[SliderV] AS [SliderV]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RaufGamesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GamesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="RaufGamesModel.Product" />
+          <EntitySet Name="ProductImages" EntityType="RaufGamesModel.ProductImage" />
+          <EntitySet Name="ProductImagesVs" EntityType="RaufGamesModel.ProductImagesV" />
+          <EntitySet Name="ProductV1" EntityType="RaufGamesModel.ProductV1" />
+          <EntitySet Name="Genres" EntityType="RaufGamesModel.Genre" />
+          <EntitySet Name="Platforms" EntityType="RaufGamesModel.Platform" />
+          <EntitySet Name="Exchanges" EntityType="RaufGamesModel.Exchange" />
+          <EntitySet Name="ExchangeVs" EntityType="RaufGamesModel.ExchangeV" />
+          <EntitySet Name="SliderVs" EntityType="RaufGamesModel.SliderV" />
+          <EntitySet Name="Orders" EntityType="RaufGamesModel.Order" />
+          <EntitySet Name="OrderDetails" EntityType="RaufGamesModel.OrderDetail" />
+          <EntitySet Name="OrderVs" EntityType="RaufGamesModel.OrderV" />
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActualPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountedPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Genre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Publishers" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Platform" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuyingPrice" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductImagesV">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActualPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountedPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Genre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Publishers" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Platform" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImageType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductV1">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActualPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountedPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Genre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Publishers" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Platform" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BuyingPrice" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreId" />
+          </Key>
+          <Property Name="GenreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Genre1" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="PlatformId" />
+          </Key>
+          <Property Name="PlatformId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Platform1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Exchange">
+          <Key>
+            <PropertyRef Name="ExchangeId" />
+          </Key>
+          <Property Name="ExchangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Platform" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StorePrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BuyingPrice" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ExchangeV">
+          <Key>
+            <PropertyRef Name="ExchangeId" />
+          </Key>
+          <Property Name="ClientGame" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ClientGameActualPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClientGameDisPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StoreGame" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="StoreGameActualPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StoreGameDisPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ExchangeId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClientName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Payment" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SliderV">
+          <Key>
+            <PropertyRef Name="ImageId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Platform" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="Product" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="OrderV">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Decimal" Precision="38" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RaufGamesModelStoreContainer" CdmEntityContainer="GamesEntities">
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="RaufGamesModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="BuyingPrice" ColumnName="BuyingPrice" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="Publishers" ColumnName="Publishers" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="DiscountedPrice" ColumnName="DiscountedPrice" />
+                <ScalarProperty Name="ActualPrice" ColumnName="ActualPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImages">
+            <EntityTypeMapping TypeName="RaufGamesModel.ProductImage">
+              <MappingFragment StoreEntitySet="ProductImages">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImagesVs">
+            <EntityTypeMapping TypeName="RaufGamesModel.ProductImagesV">
+              <MappingFragment StoreEntitySet="ProductImagesV">
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="Publishers" ColumnName="Publishers" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="DiscountedPrice" ColumnName="DiscountedPrice" />
+                <ScalarProperty Name="ActualPrice" ColumnName="ActualPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductV1">
+            <EntityTypeMapping TypeName="RaufGamesModel.ProductV1">
+              <MappingFragment StoreEntitySet="ProductV1">
+                <ScalarProperty Name="BuyingPrice" ColumnName="BuyingPrice" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="Publishers" ColumnName="Publishers" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="DiscountedPrice" ColumnName="DiscountedPrice" />
+                <ScalarProperty Name="ActualPrice" ColumnName="ActualPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="RaufGamesModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="Genre1" ColumnName="Genre" />
+                <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platforms">
+            <EntityTypeMapping TypeName="RaufGamesModel.Platform">
+              <MappingFragment StoreEntitySet="Platform">
+                <ScalarProperty Name="Platform1" ColumnName="Platform" />
+                <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exchanges">
+            <EntityTypeMapping TypeName="RaufGamesModel.Exchange">
+              <MappingFragment StoreEntitySet="Exchange">
+                <ScalarProperty Name="BuyingPrice" ColumnName="BuyingPrice" />
+                <ScalarProperty Name="StorePrice" ColumnName="StorePrice" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="ExchangeId" ColumnName="ExchangeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeVs">
+            <EntityTypeMapping TypeName="RaufGamesModel.ExchangeV">
+              <MappingFragment StoreEntitySet="ExchangeV">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExchangeId" ColumnName="ExchangeId" />
+                <ScalarProperty Name="StoreGameDisPrice" ColumnName="StoreGameDisPrice" />
+                <ScalarProperty Name="StoreGameActualPrice" ColumnName="StoreGameActualPrice" />
+                <ScalarProperty Name="StoreGame" ColumnName="StoreGame" />
+                <ScalarProperty Name="ClientGameDisPrice" ColumnName="ClientGameDisPrice" />
+                <ScalarProperty Name="ClientGameActualPrice" ColumnName="ClientGameActualPrice" />
+                <ScalarProperty Name="ClientGame" ColumnName="ClientGame" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SliderVs">
+            <EntityTypeMapping TypeName="RaufGamesModel.SliderV">
+              <MappingFragment StoreEntitySet="SliderV">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="RaufGamesModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="RaufGamesModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderVs">
+            <EntityTypeMapping TypeName="RaufGamesModel.OrderV">
+              <MappingFragment StoreEntitySet="OrderV">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

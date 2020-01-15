@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "Shop";
+}
+
+    <section class="bg-image" style="background-color: rgb(53, 54, 56) !important;">
+        @{
+            if (Request.QueryString["t"] == null)
+            {
+                <img src="~/Content/img/Headers/Consoles Machines/News/Playstation-Consoles-New.jpg" alt="">
+                <div class="owl-caption">
+                    <div class="owl-caption-container">
+                        <h1 class="owl-title">Ps4 New Consoles</h1>
+
+                    </div>
+                </div>
+                Session["type"] = "Ps4 Console";
+            }
+            else if (Request.QueryString["t"].ToString() == "n" && Request.QueryString["m"].ToString() == "ps")
+            {
+                <img src="~/Content/img/Headers/Consoles Machines/News/Playstation-Consoles-New.jpg" alt="">
+                <div class="owl-caption">
+                    <div class="owl-caption-container">
+                        <h1 class="owl-title">Ps4 New Consoles</h1>
+
+                    </div>
+                </div>
+                Session["type"] = "Ps4 Console";
+            }
+            else if (Request.QueryString["t"].ToString() == "u" && Request.QueryString["m"].ToString() == "ps")
+            {
+                <img src="~/Content/img/Headers/Consoles Machines/Used/Playstation-Consoles-Use.jpg" alt="">
+                <div class="owl-caption">
+                    <div class="owl-caption-container">
+                        <h1 class="owl-title">Ps4 Used Consoles</h1>
+
+                    </div>
+                </div>
+                Session["type"] = "Ps4 Console";
+            }
+
+            else if (Request.QueryString["t"].ToString() == "n" && Request.QueryString["m"].ToString() == "xbox")
+            {
+                <img src="~/Content/img/Headers/Consoles Machines/News/Xbox-Consoles-New.jpg" alt="">
+                <div class="owl-caption">
+                    <div class="owl-caption-container">
+                        <h1 class="owl-title">XBox New Consoles</h1>
+
+                    </div>
+                </div>
+                Session["type"] = "XBox Console";
+            }
+            else if (Request.QueryString["t"].ToString() == "u" && Request.QueryString["m"].ToString() == "xbox")
+            {
+                <img src="~/Content/img/Headers/Consoles Machines/Used/Xbox-Consoles-Use.jpg" alt="">
+                <div class="owl-caption">
+                    <div class="owl-caption-container">
+                        <h1 class="owl-title">XBox Used Consoles</h1>
+
+                    </div>
+                </div>
+                Session["type"] = "XBox Console";
+            }
+
+            else if (Request.QueryString["t"].ToString() == "n" && Request.QueryString["m"].ToString() == "nintendo")
+            {
+                <img src="~/Content/img/Headers/Consoles Machines/News/Nintendo-Consoles-New.jpg" alt="">
+                <div class="owl-caption">
+                    <div class="owl-caption-container">
+                        <h1 class="owl-title">Nintendo New Consoles</h1>
+
+                    </div>
+                </div>
+                Session["type"] = "Nintendo Console";
+            }
+            else if (Request.QueryString["t"].ToString() == "u" && Request.QueryString["m"].ToString() == "nintendo")
+            {
+                <img src="~/Content/img/Headers/Consoles Machines/Used/Nintendo-Consoles-Use.jpg" alt="">
+                <div class="owl-caption">
+                    <div class="owl-caption-container">
+                        <h1 class="owl-title">Nintendo Used Consoles</h1>
+
+                    </div>
+                </div>
+                Session["type"] = "Nintendo Console";
+            }
+        }
+
+    </section>
+
+<section class="py-0">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form class="form-inline">
+                    <button class="btn btn-light mr-2 d-none d-md-inline-block" type="button" name="button" data-toggle="tooltip" title="refresh" data-placement="bottom"><i class="ya ya-refresh ml-0"></i></button>
+                    <div class="input-group d-none d-md-flex mb-2 mb-md-0">
+                        @{
+                            Html.RenderAction("Search", "Search");
+                        }
+                    </div>
+                </form>
+                <!-- end .form-inline -->
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pt-4">
+    <div class="container">
+        <div class="row row-md">
+            @{
+                foreach (var item in Model)
+                {
+                    var Imagepath = Rauf_Gaming_Web.Classes.Settings.IMAGE_PATH + item.ImagePath;
+                    <div class="col-sm-6 col-md-4 col-lg-3 card-group">
+                        <div class="card card-sm mb-4">
+                            <a class="card-img card-img-md" href="/Game/ProductDetail?Id=@item.ProductId">
+                                <img class="card-img-top" src="@Imagepath" alt="@item.Title">
+                            </a>
+                            <div class="card-body d-flex align-items-start flex-column">
+                                <h5 class="card-title mb-auto">
+                                    <i class="ya ya-check-circle text-success" data-toggle="tooltip" data-placement="bottom" data-title="Available"></i>
+                                    <a href="/Game/ProductDetail?Id=@item.ProductId">@item.Title</a>
+                                </h5>
+                                <div class="star d-flex font-size-md mt-1 mr-2">
+                                    @if (item.Rating == "1")
+                                    {
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                    }
+                                    @if (item.Rating == "2")
+                                    {
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                    }
+                                    @if (item.Rating == "3")
+                                    {
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                    }
+                                    @if (item.Rating == "4")
+                                    {
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-muted"></i>
+                                    }
+                                    @if (item.Rating == "5")
+                                    {
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                        <i class="ya ya-star text-warning"></i>
+                                    }
+                                </div>
+                                <ul class="list-unstyled font-size-sm mt-3">
+                                    <li>Platform: @item.Platform</li>
+                                    <li>Genre: @item.Genre</li>
+                                    <li>Publisher: @item.Publishers</li>
+                                </ul>
+                                <ul class="d-flex list-unstyled mb-0 text-nowrap">
+                                    <li class="border-right mr-2 pr-2"><i class="ya ya-stock text-success mr-1"></i> In Stock</li>
+                                    <li><i class="ya ya-delivery text-success mr-1"></i> Paid Delivery</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer d-flex align-items-center">
+                                <div class="h3 font-weight-normal text-dark mb-0 mr-2">TL @String.Format("{0:n0}", item.ActualPrice)</div>
+                                @{
+                                    if (Session["MyCart"] != null)
+                                    {
+                                        bool _Found = false;
+                                        List<Rauf_Gaming_Web.Models.CartProduct> list = Session["MyCart"] as List<Rauf_Gaming_Web.Models.CartProduct>;
+                                        foreach (var p in list)
+                                        {
+                                            if (p.Id == item.ProductId.ToString() && p.Type == Session["type"].ToString())
+                                            {
+                                                _Found = true;
+                                                break;
+                                            }
+                                        }
+
+                                        if (_Found == true)
+                                        {
+                                            <button type="button" class="btn btn-outline btn-sm ml-auto" disabled>In cart <i class="ya ya-shopping-cart"></i></button>
+                                        }
+                                        else
+                                        {
+                                            <button type="button" id="btnP_@item.ProductId" onclick="GetProduct(@item.ProductId,'@Session["type"].ToString()')" class="btn btn-outline btn-sm ml-auto">Add to cart <i class="ya ya-shopping-cart"></i></button>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <button type="button" id="btnP_@item.ProductId" onclick="GetProduct(@item.ProductId,'@Session["type"].ToString()')" class="btn btn-outline btn-sm ml-auto">Add to cart <i class="ya ya-shopping-cart"></i></button>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <!-- end .card -->
+                    </div>
+                }
+            }
+
+
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/App/Game/jsCart.js"></script>
+

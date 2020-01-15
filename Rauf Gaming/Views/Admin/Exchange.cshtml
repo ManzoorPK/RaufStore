@@ -1,0 +1,56 @@
+﻿@model Rauf_Gaming.Models.Exchange
+
+@{
+    ViewBag.Title = "Exchange";
+}
+
+@using (Html.BeginForm("AddExchange", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ExchangeId)
+
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Exchange</h4>
+                <p class="card-description">
+
+                </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Title</label>
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Platform</label>
+                        @Html.DropDownList("Platform", new List<SelectListItem>
+                        {
+                           new SelectListItem{ Text="Ps4", Value = "Ps4" },
+                           new SelectListItem{ Text="XBox", Value = "XBox" },
+                           new SelectListItem{ Text="Nintendo", Value = "Nintendo" },
+
+                        }, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Store Price</label>
+                        @Html.TextBoxFor(model => model.StorePrice, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.StorePrice, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Buying Price</label>
+                        @Html.TextBoxFor(model => model.BuyingPrice, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.BuyingPrice, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <a href="/Admin/ExchangeList" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+}
+<script src="~/Scripts/App/Exchange/jsExchange.js"></script>

@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title :: Rauf Games </title>
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
+    @*<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>;*@
+    <script>
+    var RootPath = '@Url.Content("~/")';
+
+    function setCookie(key, value) {
+        deleteCookie(key);
+        deleteCookie(key);
+        var expires = new Date();
+        expires.setTime(expires.getTime() + (value * 24 * 60 * 60 * 1000));
+        document.cookie = key + '=' + value + ';expires=' + expires.toUTCString() + ';path=/;';
+    }
+    function getCookie(key) {
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    }
+    function deleteCookie(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    };
+
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/Controls/jsControls.min.js"></script>
+
+    <link href="~/Content/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="~/Content/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="~/Content/bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
+
+
+    <link href="~/Scripts/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+
+    <link rel="stylesheet" href="~/Content/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Content/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Content/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/Content/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="~/Content/vendors/lightgallery/css/lightgallery.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147719420-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-147719420-1');
+    </script>
+
+
+</head>
+
+<body>
+
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+                <a class="navbar-brand brand-logo" href="/Admin/Dashboard">
+                    <img src="/Content/images/Rauf-Logo.png" style="height:100%;" alt="logo" />
+                </a>
+                
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+              
+                <ul class="navbar-nav navbar-nav-right">
+                   
+                    <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <div class="dropdown-toggle-wrapper">
+                                <div class="inner">
+                                    <img class="img-xs rounded-circle" src="https://www.placehold.it/37x37" alt="Profile image">
+                                </div>
+                                <div class="inner">
+                                    <div class="inner">
+                                        <span class="profile-text font-weight-bold">Rauf Games</span>
+                                        <small class="profile-text small">Admin</small>
+                                    </div>
+                                    <div class="inner">
+                                        <div class="icon-wrapper">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <a class="dropdown-item p-0">
+                                <div class="d-flex border-bottom">
+                                    <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                                        <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+                                    </div>
+                                    <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                                        <i class="mdi mdi-account-outline mr-0 text-gray"></i>
+                                    </div>
+                                    <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                                        <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item mt-2">
+                                Manage Accounts
+                            </a>
+                            <a class="dropdown-item">
+                                Change Password
+                            </a>
+                            <a class="dropdown-item">
+                                Check Inbox
+                            </a>
+                            <a class="dropdown-item">
+                                Sign Out
+                            </a>
+                        </div>
+                    </li>
+                    
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+            <div class="theme-setting-wrapper">
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close mdi mdi-close"></i>
+                    <div class="d-flex align-items-center justify-content-between border-bottom">
+                        <p class="settings-heading font-weight-bold border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Template Skins</p>
+                    </div>
+                    <div class="sidebar-bg-options" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+                    <div class="sidebar-bg-options selected" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+                    <p class="settings-heading font-weight-bold mt-2">Header Skins</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles primary"></div>
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles pink"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas sidebar-dark" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-profile">
+                        <img src="https://www.placehold.it/100x100" alt="profile image">
+                        <p class="text-center font-weight-medium">Rauf Games</p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Dashboard">
+                            <i class="menu-icon icon-diamond"></i>
+                            <span class="menu-title">Dashboard</span>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#apps-dropdown" aria-expanded="false" aria-controls="apps-dropdown">
+                            <i class="menu-icon icon-settings"></i>
+                            <span class="menu-title">Games</span>
+
+                        </a>
+                        <div class="collapse" id="apps-dropdown">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/Index">Games List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/Game">Add Game</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#apps-dropdown1" aria-expanded="false" aria-controls="apps-dropdown">
+                            <i class="menu-icon icon-settings"></i>
+                            <span class="menu-title">Consoles</span>
+
+                        </a>
+                        <div class="collapse" id="apps-dropdown1">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/Consoles">Machines List</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#apps-dropdown2" aria-expanded="false" aria-controls="apps-dropdown">
+                            <i class="menu-icon icon-settings"></i>
+                            <span class="menu-title">Accessories</span>
+
+                        </a>
+                        <div class="collapse" id="apps-dropdown2">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/AccList">Accessories List</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/ExchangeList">
+                            <i class="menu-icon icon-settings"></i>
+                            <span class="menu-title">Exchange</span>
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/OrdersList">
+                            <i class="menu-icon icon-settings"></i>
+                            <span class="menu-title">Orders</span>
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Slider">
+                            <i class="menu-icon icon-settings"></i>
+                            <span class="menu-title">Slider</span>
+
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                @RenderBody()
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="container-fluid clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">
+                            Copyright © 2019
+                            <a href="https://www.aximustechs.com/" target="_blank">AximusTechs</a>. All rights reserved.
+                        </span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                            Hand-crafted & made with
+                            <i class="mdi mdi-heart-outline text-danger"></i>
+                        </span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+
+    <script src="~/Scripts/Controls/jsColumns.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Controls/jsCustomValidation.js"></script>
+    <script src="~/Scripts/Controls/AllDateFormat.js"></script>
+    <script src="~/Content/bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/Content/bower_components/moment/moment.js"></script>
+    <script src="~/Content/bower_components/chart.js/dist/Chart.min.js"></script>
+    @*<script src="~/Content/bower_components/select2/dist/js/select2.full.min.js"></script>*@
+    <script src="~/Content/bower_components/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+    <script src="~/Content/bower_components/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+    <script src="~/Content/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/Content/bower_components/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    <script src="~/Content/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="~/Content/bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Content/bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="~/Content/bower_components/slick-carousel/slick/slick.min.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/util.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/alert.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/button.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/carousel.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/collapse.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/dropdown.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/modal.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/tab.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/tooltip.js"></script>
+    <script src="~/Content/bower_components/bootstrap/js/dist/popover.js"></script>
+    <script src="~/Scripts/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/js/demo_customizer.js?version=4.4.0"></script>
+    <script src="~/Scripts/js/main.js?version=4.4.0"></script>
+    <script src="~/Scripts/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="~/Scripts/sweetalert/sweetalert.min.js"></script>
+    <script src="~/Scripts/jsDataTable/dataTables.rowGroup.min.js"></script>
+    <script src="~/Scripts/jquery.toast.js"></script>
+
+    <script src="~/Content/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Content/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/Content/js/off-canvas.js"></script>
+    <script src="~/Content/js/hoverable-collapse.js"></script>
+    <script src="~/Content/js/misc.js"></script>
+    <script src="~/Content/js/settings.js"></script>
+    <script src="~/Content/js/todolist.js"></script>
+    <script src="~/Content/vendors/lightgallery/js/lightgallery-all.min.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="~/Content/js/light-gallery.js"></script>
+    <script src="~/Content/js/dashboard.js"></script>
+    <script>
+        var IsAdd = false, IsEdit = false, IsDelete = false;
+        $(document).ready(function () {
+            var success = '@TempData["Result"]';
+        if (success != '') {
+            showSuccessToast(success);
+        }
+        var error = '@TempData["Error"]';
+        if (error != '') {
+            showErrorToast(error);
+        }
+        $(".select2").select2();
+        @*IsAdd = '@PagePermissions.IsAdd';
+        IsEdit = '@PagePermissions.IsEdit';
+        IsDelete = '@PagePermissions.IsDelete';*@
+    });
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-XXXXXXX-9', 'auto');
+        ga('send', 'pageview');
+
+/**/</script>
+    <style>
+        .Model-Red {
+            background: #c4161c !important;
+        }
+
+        .Model-Yellow {
+            background: #eaa41c !important;
+        }
+
+        .Model-Blue {
+            background: #0a0eb6 !important;
+        }
+    </style>
+    <div class="modal fade" id="ModalHighNotification" tabindex="-1" role="dialog" aria-labelledby="labelNotification" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="ModelHeader" style="color:white;display: block;">
+                    <h5 class="modal-title" id="labelNotification">New Notification</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="NotificationDetailID" />
+                    <h4>Title : <span id="NotiTitle"></span></h4>
+                    <h4>Message : </h4><span id="NotiMessage"></span>
+                </div>
+                <div class="modal-footer text-center" style="display: block;">
+                    <button type="button" class="btn btn-secondary btn-fw" onclick="NotiRead($('#NotificationDetailID').val())" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @*@RenderSection("Scripts", false)*@
+    <script src="~/Content/js/file-upload.js"></script>
+    <script src="~/Content/js/iCheck.js"></script>
+    <script src="~/Content/js/typeahead.js"></script>
+    <script src="~/Content/js/select2.js"></script>
+</body>
+</html>

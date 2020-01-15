@@ -1,0 +1,415 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Rauf Gaming</title>
+    <!-- css: theme -->
+    @{
+        if (Session["lng"] == null)
+        {
+            <link rel="stylesheet" href="~/Content/css/theme.min.css">
+        }
+        else
+        {
+            if (Session["lng"].ToString() == "en")
+            {
+                <link rel="stylesheet" href="~/Content/css/theme.min.css">
+            }
+            if (Session["lng"].ToString() == "tr")
+            {
+                <link rel="stylesheet" href="~/Content/css/LTR.css">
+            }
+            if (Session["lng"].ToString() == "sa")
+            {
+                <link rel="stylesheet" href="~/Content/css/LTR.css">
+            }
+
+        }
+
+
+    }
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+
+    <script>
+    var RootPath = '@Url.Content("~/")';
+
+    function setCookie(key, value) {
+    deleteCookie(key);
+    deleteCookie(key);
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (value * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString() + ';path=/;';
+    }
+    function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+    }
+    function deleteCookie(name) {
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    };
+
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/Controls/jsControls.min.js"></script>
+
+    <link href="~/Content/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="~/Content/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="~/Content/bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
+
+
+    <link href="~/Scripts/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+</head>
+
+<body class="fixed-navbar">
+    <div class="site">
+        <header class="site-header">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ya ya-bar"></i>
+                    </button>
+                    <a class="navbar-brand" href="/Home"><img src="/Content/img/Logos/Rauf-Logo.png" style="height: 35px;" /></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="/Home" aria-haspopup="true" aria-expanded="false">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/About/Company">About Company</a>
+                                    <a class="dropdown-item" href="/About/Privacy">Privacy Policy</a>
+                                    <a class="dropdown-item" href="/About/Faq">FAQ</a>
+                                    <a class="dropdown-item" href="/About/ContactUs">Contact Us</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown">
+                                        <a class="dropdown-item" href="#">PlayStation</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/Game/Shop?t=n&m=ps">New</a>
+                                            <a class="dropdown-item" href="/Game/Shop?t=u&m=ps">Used</a>
+                                            <a class="dropdown-item" href="/Exchange/Exchange?type=Ps">Exchange</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item" href="#">XBOX</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/Game/Shop?t=n&m=xbox">New</a>
+                                            <a class="dropdown-item" href="/Game/Shop?t=u&m=xbox">Used</a>
+                                            <a class="dropdown-item" href="/Exchange/Exchange?type=XBox">Exchange</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item" href="#">Nintendo</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/Game/Shop?t=n&m=nintendo">New</a>
+                                            <a class="dropdown-item" href="/Game/Shop?t=u&m=nintendo">Used</a>
+                                            <a class="dropdown-item" href="/Exchange/Exchange?type=Nintendo">Exchange</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consoles Machines</a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown">
+                                        <a class="dropdown-item" href="#">New</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/Console/Shop?t=n&m=ps">PlayStation</a>
+                                            <a class="dropdown-item" href="/Console/Shop?t=n&m=xbox">XBOX</a>
+                                            <a class="dropdown-item" href="/Console/Shop?t=n&m=nintendo">Nintendo</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item" href="#">Used</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/Console/Shop?t=u&m=ps">PlayStation</a>
+                                            <a class="dropdown-item" href="/Console/Shop?t=u&m=xbox">XBOX</a>
+                                            <a class="dropdown-item" href="/Console/Shop?t=u&m=nintendo">Nintendo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accessories</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=vr">VR</a>
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=hs">Headsets</a>
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=ms">Mouse</a>
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=kb">Keyboards</a>
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=js">Joysticks</a>
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=sp">Speakers</a>
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=cm">Cameras</a>
+                                    <a class="dropdown-item" href="/Accessories/Shop?t=tv">TVs</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="navbar-nav navbar-right flex-row d-flex align-items-center">
+                        <li class="nav-item dropdown">
+                            @{
+                                if (Session["lng"] == null)
+                                {
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-us"> </span> English</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                        <a class="dropdown-item" href="#sa" onclick="Changelng('sa')"><span class="flag-icon flag-icon-sa"> </span>  Arabic</a>
+                                        <a class="dropdown-item" href="#tr" onclick="Changelng('tr')"><span class="flag-icon flag-icon-tr"> </span>  Turkish</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    if (Session["lng"].ToString() == "en")
+                                    {
+                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-us"> </span> English</a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                            <a class="dropdown-item" href="#sa" onclick="Changelng('sa')"><span class="flag-icon flag-icon-sa"> </span>  Arabic</a>
+                                            <a class="dropdown-item" href="#tr" onclick="Changelng('tr')"><span class="flag-icon flag-icon-tr"> </span>  Turkish</a>
+                                        </div>
+                                    }
+
+                                    if (Session["lng"].ToString() == "tr")
+                                    {
+                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-tr"> </span> Turkish</a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                            <a class="dropdown-item" href="#sa" onclick="Changelng('sa')"><span class="flag-icon flag-icon-sa"> </span>  Arabic</a>
+                                            <a class="dropdown-item" href="#tr" onclick="Changelng('en')"><span class="flag-icon flag-icon-us"> </span>  English</a>
+                                        </div>
+                                    }
+
+                                    if (Session["lng"].ToString() == "sa")
+                                    {
+                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-sa"> </span> Arabic</a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                            <a class="dropdown-item" href="#sa" onclick="Changelng('tr')"><span class="flag-icon flag-icon-sa"> </span>  Turkish</a>
+                                            <a class="dropdown-item" href="#tr" onclick="Changelng('en')"><span class="flag-icon flag-icon-us"> </span>  English</a>
+                                        </div>
+                                    }
+                                }
+                            }
+
+                        </li>
+                        <li class="nav-item dropdown dropdown-cart d-block">
+                            <a class="nav-link" href="/Buy/MyCart" aria-haspopup="true" aria-expanded="false">
+                                <i class="ya ya-shopping-cart"></i>
+                                @{
+                                    if (Session["MyCart"] != null)
+                                    {
+                                        if (Convert.ToInt32(Session["NoOfCartItems"].ToString()) > 0)
+                                        {
+                                            <span id="ShowCartIcon" class="badge badge-warning">@Session["NoOfCartItems"].ToString()</span>}
+                                        else
+                                        {
+                                            <span id="ShowCartIcon" style="display:none;" class="badge badge-warning"></span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span id="ShowCartIcon" style="display:none;" class="badge badge-warning"></span>
+                                    }
+                                }
+
+                            </a>
+
+                    </ul>
+                    <!-- end .navbar-nav -->
+                </div>
+            </nav>
+        </header>
+        <!-- end .site-header -->
+        <div class="site-content" role="main">
+            <section class="bg-primary py-3">
+                <div class="container">
+                    <div class="promo py-0">
+                        <h2 class="promo-title h6">Check out the latest games and our products. We have great prices!</h2>
+
+                    </div>
+                </div>
+            </section>
+            @{
+                Html.RenderAction("Slider", "Home");
+            }
+            <section class="py-5 py-md-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-11 col-md-8 text-center mx-auto mb-4">
+                            <i class="ya ya-ranking icon"></i>
+                            <h2 class="font-size-lg">Gaming Consoles</h2>
+                            <p class="lead">Buy your gaming console from Rauf Store at a good price along with video game DVDs. We offer used and new devices</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-sm">
+                                <a class="card-img card-img-lg" href="/Console/Shop?t=n&m=ps">
+                                    <img class="card-img-top" src="~/Content/img/Logos/PlayStation.png" alt="PS4">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="ya ya-check-circle text-success" data-toggle="tooltip" data-placement="bottom" data-title="Available"></i>
+                                        <a href="/Console/Shop?t=n&m=ps">PlayStation</a>
+                                    </h5>
+                                    <p class="card-tex font-size-md mb-0">Purchase your PlayStation 4 gaming console, a great and powerful device powered and made by Sony</p>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-secondary btn-lg" style="width:99.4%;border-radius: initial;" href="/Console/Shop?t=n&m=ps" role="button">PlayStation</a>
+                                </div>
+                            </div>
+                            <!-- end .card -->
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-sm">
+                                <a class="card-img card-img-lg" href="/Console/Shop?t=n&m=xbox">
+                                    <img class="card-img-top" src="~/Content/img/Logos/Xbox.png" alt="XBOX">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="ya ya-check-circle text-success" data-toggle="tooltip" data-placement="bottom" data-title="Available"></i>
+                                        <a href="/Console/Shop?t=n&m=xbox">XBOX</a>
+                                    </h5>
+                                    <p class="card-tex font-size-md mb-0">Purchase your XBOX gaming console, a great and powerful device powered and made by Microsoft</p>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-secondary btn-lg" style="width:99.4%;border-radius: initial;" href="/Console/Shop?t=n&m=xbox" role="button">XBOX</a>
+                                </div>
+                            </div>
+                            <!-- end .card -->
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-sm">
+                                <a class="card-img card-img-lg" href="/Console/Shop?t=n&m=nintendo">
+                                    <img class="card-img-top" src="~/Content/img/Logos/Nintendo.png" alt="Nintendo">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="ya ya-check-circle text-success" data-toggle="tooltip" data-placement="bottom" data-title="Available"></i>
+                                        <a href="/Console/Shop?t=n&m=nintendo">Nintendo</a>
+                                    </h5>
+                                    <p class="card-tex font-size-md mb-0">Purchase your Nintendo gaming console, a great and powerful device powered and made by Nintendo</p>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-secondary btn-lg" style="width:99.4%;border-radius: initial;" href="/Console/Shop?t=n&m=nintendo" role="button">Nintendo</a>
+                                </div>
+                            </div>
+                            <!-- end .card -->
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section class="bg-white border-top border-bottom py-0 py-md-4">
+                <div class="container-fluid">
+                    <div class="row justify-content-around align-items-center">
+                        <div class="col-lg-6 px-xs-0">
+                            <div class="img-cover" style="min-height: 600px;">
+                                <img src="~/Content/img/mage.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-5 pl-md-5 pb-4 pb-md-0 mr-auto mt-4 mt-md-0 mb-2 mb-md-0">
+                            <div class="px-2 px-md-0">
+                                <h2 class="display-5 font-weight-normal text-dark mb-3">About Rauf Gaming Store</h2>
+                                <p class="lead">Rauf Store is a Turkish registered company based in Istanbul, Turkey. The company is specialized in selling and buying gaming console machines and the brand new and used PC, PlayStation and XBOX games. The company was founded in 2019 to provide premium pricing and competitive pricing. Also the company sells many products which are (Virtual Reality gadgets, Televisions, mobile covers, speakers, headsets, joysticks, camera and computer mouses). Our competitive pricing have enabled us to take a good local market share.</p>
+                            </div>
+                            <div style="padding-top:5px"></div>
+                            <div class="footer-social order-1 order-md-2 ml-md-auto text-center text-md-left">
+                                <a href="#" target="_blank" data-toggle="tooltip" title="" data-original-title="facebook">
+                                    <img src="~/Content/img/Social Media Icons/facebook.png" />
+                                </a>
+                                <a href="#" target="_blank" data-toggle="tooltip" title="" data-original-title="Instagram">
+                                    <img src="~/Content/img/Social Media Icons/instagram.png" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-5 py-md-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-11 col-md-8 text-center mx-auto mb-4">
+                            <i class="ya ya-shopping-cart icon"></i>
+                            <h2 class="font-size-lg">Games you might like</h2>
+                            <p class="lead">You can find all type of games here on Rauf Gaming Store, We sell and exchange new and used games. And you can purchase anything through Bank Transfer or through using your Debit or Credit Cards online.</p>
+                        </div>
+                    </div>
+                    @{
+                        Html.RenderAction("NewGames", "Game");
+                    }
+                    <div class="text-center mt-3">
+                        <a class="btn btn-secondary btn-lg" href="/Game/Shop?=t&m=ps" role="button">View store</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-primary py-0">
+                <div class="container">
+                    <div class="promo">
+                        <h2 class="promo-title h4">Check out the latest games and our products. We have great prices</h2>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- end .site-content -->
+        <footer class="site-footer bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-4 mb-md-0 pb-1 pb-md-0">
+                        <div class="footer-title">About</div>
+                        <p>Rauf Store is a Turkish registered company based in Istanbul, Turkey. The company is specialized in selling and buying gaming console machines and the brand new and used PC, PlayStation and XBOX games. The company was founded in 2019 to provide premium pricing and competitive pricing. Also the company sells many products which are (Virtual Reality gadgets, Televisions, mobile covers, speakers, headsets, joysticks, camera and computer mouses). Our competitive pricing have enabled us to take a good local market share.</p>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container d-flex flex-column flex-md-row">
+                    <div class="order-2 order-md-1">
+                        <p class="footer-copyright">&copy; 2020 <a href="https://www.RaufStore.com" target="_blank">Rauf Games</a>
+                    </div>
+                    <div class="footer-social order-1 order-md-2 ml-md-auto text-center text-md-right">
+                        <span class="d-none d-sm-block mb-2">follow us on social media</span>
+                        <a href="#" target="_blank" data-toggle="tooltip" title="facebook"><i class="ya ya-facebook"></i></a>
+                        <a href="#" target="_blank" data-toggle="tooltip" title="instagram"><i class="ya ya-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end .site-footer -->
+    </div>
+    <!-- end .site -->
+    <!-- js: vendor -->
+    <script src="~/Content/js/vendor.js"></script>
+    <script src="~/Content/js/theme.min.js"></script>
+    <!-- js: plugins -->
+    <script src="~/Content/plugins/lazysizes/lazysizes.js"></script>
+    <script src="~/Content/plugins/parallax/parallax.min.js"></script>
+    <!-- theme settings -->
+    <script>
+        var gameforest = {
+            disqus: 'gameforestyakuzieu',
+            facebook: {
+                lang: 'en_US',
+                version: 'v3.2',
+                id: '',
+            }
+        }
+    </script>
+</body>
+</html>
+<script src="~/Scripts/App/Game/jsCart.js"></script>

@@ -1,0 +1,31 @@
+﻿@model List<Rauf_Gaming.Models.OrderDetail>
+
+<table class="table">
+    <thead>
+        <tr class="bg-dark text-white">
+            <th>Product</th>
+            <th>Type</th>
+            <th class="text-right">Quantity</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int total = 0;
+            foreach (var i in Model)
+            {
+
+                total += Convert.ToInt32(i.TotalPrice);
+                Session["_Total"] = total;
+                <tr class="text-right">
+                    <td class="text-left">@i.Product</td>
+                    <td class="text-left">@i.Type</td>
+                    <td>@i.Quantity</td>
+                    <td>TL @Convert.ToInt32(i.UnitPrice)</td>
+                    <td>TL @Convert.ToInt32(i.TotalPrice)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

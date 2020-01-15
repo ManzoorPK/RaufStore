@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Thanks";
+}
+
+<section class="bg-image text-center py-8 px-4 px-md-0" style="background-color: rgb(37, 37, 37) !important;">
+    <img class="background" src="https://img.youtube.com/vi/y3Cpetu4ke4/maxresdefault.jpg" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-12 mx-auto">
+                <div style="height:100px"></div>
+                <section class="pt-0 py-lg-5">
+                    @{
+
+                    }
+                    @{
+                        if (Session["op"] != null)
+                        {
+                            if (Session["op"].ToString() == "true")
+                            {
+                                <div class="alert alert-success mb-0 rounded-0 border-left-0 border-right-0 d-none d-md-block mb-n1 index-2">
+                                    <div class="container">
+                                        <i class="ya ya-alert mr-2"></i><strong>We received your order, we will contact you back soon.</strong>
+                                    </div>
+                                </div>
+                                Session["op"] = null;
+                                Session["MyCart"] = null;
+                                Session["Total"] = null;
+                                Session["NoOfCartItems"] = null;
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger mb-0 rounded-0 border-left-0 border-right-0 d-none d-md-block mb-n1 index-2">
+                                    <div class="container">
+                                        <i class="ya ya-alert mr-2"></i><strong>An error occured while placing order.</strong>
+                                    </div>
+                                </div>
+                            }
+
+
+                        }
+                    }
+
+
+                </section>
+                <a class="btn btn-primary btn-rounded btn-lg" href="/">Back to home</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+

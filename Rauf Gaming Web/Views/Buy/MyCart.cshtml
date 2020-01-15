@@ -1,0 +1,179 @@
+﻿@model List<Rauf_Gaming_Web.Models.CartProduct>
+@{
+    ViewBag.Title = "MyCart";
+}
+
+<section class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex align-items-center py-3">
+                    <h2 class="h3 font-weight-semibold text-white mb-0 mr-auto">
+                        Shopping Cart <div class="font-weight-light d-inline">(@Model.Count)</div>
+                    </h2>
+                    <a class="btn btn-outline-light" href="/Game/Shop" role="button">Back to shop</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-lg-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-striped border align-items-center table-layout-fixed">
+                        <thead>
+                            <tr>
+                                <th class="d-none d-lg-table-cell text-center" scope="col" style="width: 150px;">Product</th>
+                                <th scope="col" style="width: 450px;">Title</th>
+                                <th scope="col" class="text-center" style="width: 80px;">Price</th>
+                                <th scope="col" class="text-center text-nowrap" style="width: 160px;">Quantity</th>
+                                <th scope="col" class="text-center" style="width: 80px;">Total</th>
+                                <th scope="col" style="width: 80px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int _Total = 0;
+                                int _RowNumber = 0;
+                                foreach (var product in Model)
+                                {
+                                    _Total = +_Total + Convert.ToInt32(product.Total);
+                                    Session["Total"] = _Total;
+                                    _RowNumber += 1;
+                                    var Imagepath = Rauf_Gaming_Web.Classes.Settings.IMAGE_PATH + product.Photo;
+                                    <tr id="tr_@_RowNumber.ToString()">
+                                        <td class="d-none d-lg-table-cell text-center">
+                                            <div class="img-thumbnail rounded d-inline-block">
+                                                <img class="rounded" style="height: 100px" src="@Imagepath">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h6><a href="/Game/ProductDetail?Id=@product.Id">@product.Name</a></h6>
+                                            <a class="btn btn-light btn-xs" href="#">@product.Type</a>
+                                        </td>
+                                        <td class="text-center">TL @String.Format("{0:n0}", @Convert.ToInt32(@product.Price))</td>
+                                        <td class="text-center">
+                                            <div class="input-group quantity">
+                                                <div class="input-group-prepend">
+                                                    <button onclick="SubQuantity(this)" id="btnSubQty_@_RowNumber.ToString()" class="btn btn-link font-size-xs minus" type="button"><i class="ya ya-minus m-0"></i></button>
+                                                </div>
+                                                <input type="number" id="txtQty_@_RowNumber.ToString()" class="form-control text" value="@product.Quantity" min="1" disabled>
+                                                <div class="input-group-append">
+                                                    <button onclick="AddQuantity(this)" id="btnAddQty_@_RowNumber.ToString()" class="btn btn-link font-size-xs plus" type="button"><i class="ya ya-plus m-0"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" value="@product.Price" id="lblPrice_@_RowNumber.ToString()" />
+                                            <input type="hidden" value="@product.Id" id="productId_@_RowNumber.ToString()" />
+                                            <input type="hidden" value="@product.Type" id="productType_@_RowNumber.ToString()" />
+                                        </td>
+                                        <td class="text-center" id="td_@_RowNumber.ToString()">TL @String.Format("{0:n0}", @Convert.ToInt32(@product.Total))</td>
+                                        <td class="text-center">
+                                            <button type="button" onclick="RemoveProduct(@product.Id)" class="btn btn-link p-0" data-toggle="tooltip" title="Remove from cart"><i class="ya ya-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="card card-default mb-0">
+                    <h6 class="card-header">Order Summary</h6>
+                    <div class="card-body">
+                        <p>Shipping and additional costs are calculated based on values you have entered.</p>
+                        <table class="table table-striped mt-4 mb-0">
+                            <tbody>
+                                @*<tr>
+                                        <th scope="row">Cart Subtotal</th>
+                                        <td class="text-right">$253.94</td>
+                                    </tr>*@
+                                @*<tr>
+                                        <th scope="row">Shipping</th>
+                                        <td class="text-right">$32.45</td>
+                                    </tr>*@
+                                <tr>
+                                    <th scope="row">Tax</th>
+                                    <td class="text-right">TL 0.00</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <td class="text-right">
+                                        <strong class="text-danger">TL  @String.Format("{0:n0}", Convert.ToInt32(@Session["Total"].ToString()))</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end .card -->
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <h6>Bank Transfer (EFT)</h6>
+                    <div>
+
+                        <table>
+                            <tbody>
+
+                                <tr>
+                                    <th>
+                                        <a href="#" onclick="DisplayBank('g')" id="btnGaranti">
+                                            <img id="imgGaranti" src="~/Content/img/Logos/garanti-logo.png" style="width: 100px;" />
+                                        </a>
+                                    </th>
+                                    <th style="padding-left:20px">
+                                        <a href="#" onclick="DisplayBank('z')" id="btnZiraat">
+                                            <img  src="~/Content/img/Logos/Ziraat-bank-logo.png" style="width: 120px;" />
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">
+                                        <div style="padding-top:15px; display:none;" id="Ziraatbank">
+                                            Ziraat Bankası
+                                            <hr />
+                                            Name: HÜSEYİN RAUF
+                                            <br />
+                                            IBAN: TR 2500 0100 1945 7231 5408 5001
+                                        </div>
+                                        <div style="padding-top:15px;" id="Garantibank">
+                                            Garanti banka E5 şubesi
+                                            <hr />
+                                            Name: Hüseyin Rauf
+                                            <br />
+                                            IBAN: TR82 0006 2001 1510 0006 6370 20
+                                        </div>
+                                    </th>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <!-- end .card -->
+            </div>
+        </div>
+        <div class="d-md-flex align-items-start mt-2 mb-4 mb-md-4">
+
+            <div class="d-flex d-md-block flex-column ml-md-auto">
+                @*<button class="btn btn-outline mr-md-1 mb-2 mb-md-0" type="button">Update Cart</button>*@
+                <a class="btn btn-primary" href="/Buy/CheckOut" role="button">Proceed to Checkout</a>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/App/Game/jsCart.js"></script>

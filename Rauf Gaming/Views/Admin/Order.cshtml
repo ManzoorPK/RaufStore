@@ -1,0 +1,54 @@
+﻿@model Rauf_Gaming.Models.Order
+
+@{
+    ViewBag.Title = "Order";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card px-2">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <h3 class="text-left my-5">Invoice&nbsp;&nbsp;#INV-@Html.DisplayFor(model => model.OrderId)</h3>
+                        <hr>
+                    </div>
+                    <div class="container-fluid d-flex justify-content-between">
+                        <div class="col-lg-3 pl-0">
+                            <p class="mt-5 mb-2">
+                                <b>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</b>
+                            </p>
+                            <p>
+                                @Html.DisplayFor(model => model.Address),
+                                <br>@Html.DisplayFor(model => model.City),
+                                <br>@Html.DisplayFor(model => model.ZipCode).
+                            </p>
+                        </div>
+                      
+                    </div>
+                    <div class="container-fluid d-flex justify-content-between">
+                        <div class="col-lg-3 pl-0">
+                            <p class="mb-0 mt-5">Invoice Date : @DateTime.Parse(Model.Date.ToString()).Date.ToLongDateString()</p>
+                        </div>
+                    </div>
+                    <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                        <div class="table-responsive w-100">
+                            @{
+                                Html.RenderAction("Items", "Admin");
+                            }
+                        </div>
+                    </div>
+                    <div class="container-fluid mt-5 w-100">
+                        <h4 class="text-right mb-5">Total : TL @Session["_Total"].ToString()</h4>
+                        <hr>
+                    </div>
+                    <div class="container-fluid w-100">
+                        <a href="/Admin/OrdersList" class="btn btn-success float-right mt-4">
+                            <i class="mdi mdi-telegram mr-1"></i>Back To Orders
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

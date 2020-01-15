@@ -1,0 +1,375 @@
+﻿@model Rauf_Gaming.Models.Dashboard
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between pb-4">
+                <h4 class="card-title mb-0">Orders</h4>
+                @*<p class="mb-0">
+                    Last 6 day
+                    <i class="mdi mdi-chevron-down"></i>
+                </p>*@
+            </div>
+            <div class="row">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Total Orders</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Orders</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between pb-4">
+                <h4 class="card-title mb-0">Consoles</h4>
+                @*<p class="mb-0">
+                    Last 6 day
+                    <i class="mdi mdi-chevron-down"></i>
+                </p>*@
+            </div>
+            <div class="row">
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Ps4 (New)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Ps4New</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Ps4 (Used)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Ps4Used</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">XBox (New)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.XBoxNew</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">XBox (Used)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.XBoxUsed</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin-sm-down stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Nintendo (New)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.NintendoNew</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin-sm-down stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Nintendo (Used)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.NintendoUsed</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between pb-4">
+                <h4 class="card-title mb-0">Games</h4>
+                @*<p class="mb-0">
+                    Last 6 day
+                    <i class="mdi mdi-chevron-down"></i>
+                </p>*@
+            </div>
+            <div class="row">
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Ps4 (New)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Ps4NewGames</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Ps4 (Used)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Ps4UsedGames</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">XBox (New)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.XBoxNewGames</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">XBox (Used)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.XBoxUsedGames</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin-sm-down stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Nintendo (New)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.NintendoNewGames</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin-sm-down stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Nintendo (Used)</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.NintendoUsedGames</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between pb-4">
+                <h4 class="card-title mb-0">Accessories</h4>
+                @*<p class="mb-0">
+                    Last 6 day
+                    <i class="mdi mdi-chevron-down"></i>
+                </p>*@
+            </div>
+            <div class="row">
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">VR</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.VR</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Headsets</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.HeadSet</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Mouse</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Mouse</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Keyboards</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Keyboard</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Joysticks</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.JoyStick</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Speakers</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Speaker</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">Cameras</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.Camera</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="inner flex-grow">
+                                    <div style="padding-top:12px;"></div>
+                                    <h4 class="font-weight-bold">TV</h4>
+                                </div>
+                                <div class="inner d-flex align-items-center">
+                                    <h1 class="text-primary font-weight-bold">@Model.TV</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

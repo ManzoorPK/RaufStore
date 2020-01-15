@@ -1,0 +1,114 @@
+﻿@model Rauf_Gaming.Models.Order
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<section class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex align-items-center py-3">
+                    <h2 class="h3 font-weight-semibold text-white mb-0 mr-auto">Checkout</h2>
+                    <a class="btn btn-outline-light" href="/Buy/MyCart" role="button">Back to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@using (Html.BeginForm("DoCheckOut", "Buy", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.OrderId)
+    <section class="py-lg-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="card card-default">
+                        <h6 class="card-header"><i class="ya ya-pin mr-1"></i> Enter Shipping Information</h6>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3 mb-md-0">
+                                        <label for="first-name">First Name</label>
+                                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "Enter First Name", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="last-name">Last Name</label>
+                                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Enter Last Name", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <label for="address">Address</label>
+                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter Address", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <label for="zip">Zip</label>
+                                        @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control", @placeholder = "Enter Zip Code", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="city">City</label>
+                                        @Html.TextBoxFor(model => model.City, new { @class = "form-control", @placeholder = "Enter City", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="email">Email Address</label>
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter Email", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        <small class="form-text text-muted">We’ll never share your email with anyone else.</small>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <div class="card card-default mb-3">
+                        <h6 class="card-header">Order Summary</h6>
+                        <div class="card-body px-2">
+                            <p class="font-size-md">Shipping and additional costs are calculated based on values you have entered.</p>
+                            <table class="table table-striped mt-4 mb-0">
+                                <tbody>
+                                    @*<tr>
+                                            <th scope="row">Cart Subtotal</th>
+                                            <td class="text-right">$253.94</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Shipping</th>
+                                            <td class="text-right">$32.45</td>
+                                        </tr>*@
+                                    <tr>
+                                        <th scope="row">Tax</th>
+                                        <td class="text-right">TL 0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total</th>
+                                        <td class="text-right">
+                                            <strong class="text-danger">TL @String.Format("{0:n0}", Convert.ToInt32(@Session["Total"].ToString()))</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end .card -->
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+<script src="~/Scripts/App/Game/jsCart.js"></script>

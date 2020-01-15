@@ -1,0 +1,91 @@
+﻿@model Rauf_Gaming_Web.Models.Email
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+<section class="bg-image" style="background-color: rgb(53, 54, 56) !important;">
+    <img src="/Content/img/Headers/About/ContactUs-Us.jpg" alt="">
+
+</section>
+
+<section class="bg-primary py-0">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="promo py-4">
+                    <h2 class="promo-title h4 mr-4">Check out the latest games and our products. We have great prices!</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="mapouter" style="width:100%;">
+    <div class="gmap_canvas">
+        <iframe width="2000" height="500" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.3067962013306!2d28.645492915679846!3d40.9966577280881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b55feb5872453f%3A0xa038ac1bfe572a4d!2sRauf%20ticaret!5e0!3m2!1sen!2sus!4v1578635809903!5m2!1sen!2sus" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a>
+    </div>
+    <style>
+        .mapouter {
+            position: relative;
+            text-align: right;
+            height: 500px;
+            width: 100%;
+        }
+
+        .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</div>
+@using (Html.BeginForm("SendEmail", "About", FormMethod.Post))
+{
+    <section class="py-lg-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 mx-auto">
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            @Html.TextBoxFor(model => model.EmailAddress, new { placeholder = "Enter email", @class = "form-control form-control-lg", required = "required" })
+                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                            <small class="form-text text-muted">We’ll never share your email with anyone else.</small>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Enter your name", @class = "form-control form-control-lg", required = "required" })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    @Html.TextBoxFor(model => model.Subject, new { placeholder = "Enter subject", @class = "form-control form-control-lg", required = "required" })
+                                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            @Html.TextAreaFor(model => model.Message, new { @class = "form-control form-control-lg", @rows = 5, required = "required" })
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">I am not a ROBOT.</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline btn-lg mt-3 mt-lg-4">Send message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+    <script src="~/Scripts/App/Game/jsCart.js"></script>

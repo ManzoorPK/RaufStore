@@ -1,0 +1,62 @@
+﻿@model Rauf_Gaming.Models.ExchangeV
+
+@{
+    ViewBag.Title = "ExchangeEdit";
+}
+
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Exchange Request</h4>
+            <p class="card-description">
+
+            </p>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">Requested By</label>
+                    @Html.TextBoxFor(model => model.ClientName, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Email</label>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Client Title</label>
+                    @Html.TextBoxFor(model => model.ClientGame, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Actual Price</label>
+                    @Html.TextBoxFor(model => model.ClientGameActualPrice, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Dis. Price</label>
+                    @Html.TextBoxFor(model => model.ClientGameDisPrice, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Requested Title</label>
+                    @Html.TextBoxFor(model => model.StoreGame, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Actual Price</label>
+                    @Html.TextBoxFor(model => model.StoreGameActualPrice, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Dis. Price</label>
+                    @Html.TextBoxFor(model => model.StoreGameDisPrice, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Client want to pay</label>
+                    @Html.TextBoxFor(model => model.Payment, new { @class = "form-control", @readonly = "readonly" })
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Platform</label>
+                    @Html.TextBoxFor(model => model.Type, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <a href="/Admin/ExchangeList" class="btn btn-success mr-2">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
