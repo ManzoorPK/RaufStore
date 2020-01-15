@@ -12,6 +12,8 @@ namespace Rauf_Gaming_Web.Controllers
     public class AboutController : Controller
     {
         // GET: About
+
+        //text by manzoor
         public ActionResult Faq()
         {
             return View();
