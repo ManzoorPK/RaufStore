@@ -25,5 +25,6 @@ namespace Rauf_Gaming.Models
         public Nullable<System.DateTime> Date { get; set; }
         public string Status { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public string Phone { get; set; }
     }
 }

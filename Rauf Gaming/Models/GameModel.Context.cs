@@ -37,7 +37,5 @@ namespace Rauf_Gaming.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderV> OrderVs { get; set; }
-
-        public System.Data.Entity.DbSet<Rauf_Gaming.Models.Dashboard> Dashboards { get; set; }
     }
 }

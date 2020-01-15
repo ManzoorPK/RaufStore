@@ -42,13 +42,26 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="email">Email Address</label>
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter Email", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        <small class="form-text text-muted">We’ll never share your email with anyone else.</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="zip">Phone</label>
+                                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Enter Phone", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-md-4 mb-3 mb-md-0">
                                         <label for="address">Address</label>
                                         @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter Address", required = "required" })
                                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-4 mb-3 mb-md-0">
-                                        <label for="zip">Zip</label>
+                                        <label for="zip">Zip Code</label>
                                         @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control", @placeholder = "Enter Zip Code", required = "required" })
                                         @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
                                     </div>
@@ -58,14 +71,7 @@
                                         @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="email">Email Address</label>
-                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter Email", required = "required" })
-                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                        <small class="form-text text-muted">We’ll never share your email with anyone else.</small>
-                                    </div>
-                                </div>
+
 
                             </form>
                         </div>

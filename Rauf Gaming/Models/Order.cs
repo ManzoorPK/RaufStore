@@ -24,5 +24,6 @@ namespace Rauf_Gaming.Models
         public string Country { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Status { get; set; }
+        public string Phone { get; set; }
     }
 }

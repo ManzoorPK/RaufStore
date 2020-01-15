@@ -30,6 +30,7 @@
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" MaxLength="1000" />
           <Property Name="ZipCode" Type="varchar" MaxLength="50" />
           <Property Name="City" Type="varchar" MaxLength="50" />
@@ -119,6 +120,7 @@ warning 6002: The table/view 'RaufGames.dbo.OrderV' does not have a primary key 
           <Property Name="Date" Type="date" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
           <Property Name="Total" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'RaufGames.dbo.ProductImagesV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -214,7 +216,8 @@ warning 6002: The table/view 'RaufGames.dbo.SliderV' does not have a primary key
     [OrderV].[Country] AS [Country], 
     [OrderV].[Date] AS [Date], 
     [OrderV].[Status] AS [Status], 
-    [OrderV].[Total] AS [Total]
+    [OrderV].[Total] AS [Total], 
+    [OrderV].[Phone] AS [Phone]
     FROM [dbo].[OrderV] AS [OrderV]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ProductImagesV" EntityType="Self.ProductImagesV" store:Type="Views" store:Schema="dbo">
@@ -420,6 +423,7 @@ warning 6002: The table/view 'RaufGames.dbo.SliderV' does not have a primary key
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -448,6 +452,7 @@ warning 6002: The table/view 'RaufGames.dbo.SliderV' does not have a primary key
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Total" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -587,6 +592,7 @@ warning 6002: The table/view 'RaufGames.dbo.SliderV' does not have a primary key
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="RaufGamesModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
@@ -616,6 +622,7 @@ warning 6002: The table/view 'RaufGames.dbo.SliderV' does not have a primary key
           <EntitySetMapping Name="OrderVs">
             <EntityTypeMapping TypeName="RaufGamesModel.OrderV">
               <MappingFragment StoreEntitySet="OrderV">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Date" ColumnName="Date" />

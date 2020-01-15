@@ -144,6 +144,7 @@ function GetCol(tbl) {
                 //{ title: "Date", data: "Date" },
                 { title: "First Name", data: "FirstName" },
                 { title: "Last Name", data: "LastName" },
+                { title: "Phone", data: "Phone" },
                 { title: "Email", data: "Email" },
                 { title: "Payment", data: "Total" },
                 //{ title: "Status", data: "Status" },
